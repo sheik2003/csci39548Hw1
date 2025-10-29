@@ -24,9 +24,38 @@
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
+                
+                <!-- Cart Icon -->
+                <button class="cart-icon" onclick="toggleCart()" aria-label="Shopping Cart">
+                    🛒
+                    <span id="cart-badge">0</span>
+                </button>
             </div>
         </div>
     </header>
+    
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" onclick="closeCart()" aria-label="Close Cart">×</button>
+        </div>
+        <div class="cart-body">
+            <div id="cart-content">
+                <p class="cart-empty-msg">Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total:</span>
+                <span class="cart-total-amount" id="cart-total">$0.00</span>
+            </div>
+            <div class="cart-actions">
+                <button class="checkout-btn" onclick="alert('Checkout functionality coming soon!')">Proceed to Checkout</button>
+                <button class="clear-cart-btn" id="clear-cart-btn" onclick="clearCart()" style="display: none;">Clear Cart</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -46,6 +75,7 @@
                             <th>Item</th>
                             <th>Description</th>
                             <th>Price</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,76 +83,91 @@
                             <td><strong>Steak Frites</strong></td>
                             <td>Grilled ribeye steak with hand-cut french fries</td>
                             <td class="price">$32</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Steak Frites', 32)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Duck Confit</strong></td>
                             <td>Slow-cooked duck leg with cherry gastrique</td>
                             <td class="price">$28</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Duck Confit', 28)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Coq au Vin</strong></td>
                             <td>Classic chicken stew braised in red wine</td>
                             <td class="price">$26</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Coq au Vin', 26)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Moules Marinières</strong></td>
                             <td>Fresh mussels steamed in white wine and herbs</td>
                             <td class="price">$24</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Moules Marinières', 24)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Bouillabaisse</strong></td>
                             <td>Traditional Provençal fish stew with saffron</td>
                             <td class="price">$30</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Bouillabaisse', 30)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Salade Niçoise</strong></td>
                             <td>Classic salad with tuna, green beans, and olives</td>
                             <td class="price">$18</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Salade Niçoise', 18)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Onion Soup Gratinée</strong></td>
                             <td>Rich beef broth with caramelized onions and gruyère</td>
                             <td class="price">$12</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Onion Soup Gratinée', 12)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Ratatouille</strong></td>
                             <td>Provençal vegetable stew with eggplant and zucchini</td>
                             <td class="price">$16</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Ratatouille', 16)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Croque Monsieur</strong></td>
                             <td>Grilled ham and cheese sandwich with béchamel</td>
                             <td class="price">$14</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Croque Monsieur', 14)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Escargots de Bourgogne</strong></td>
                             <td>Snails in garlic herb butter with baguette</td>
                             <td class="price">$16</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Escargots de Bourgogne', 16)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Crème Brûlée</strong></td>
                             <td>Classic vanilla custard with caramelized sugar</td>
                             <td class="price">$8</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Crème Brûlée', 8)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Tarte Tatin</strong></td>
                             <td>Upside-down apple tart with vanilla ice cream</td>
                             <td class="price">$10</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Tarte Tatin', 10)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Profiteroles</strong></td>
                             <td>Choux pastry filled with ice cream and chocolate</td>
                             <td class="price">$9</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Profiteroles', 9)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Fromage Plate</strong></td>
                             <td>Selection of French cheeses with fig jam</td>
                             <td class="price">$22</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Fromage Plate', 22)">Add to Cart</button></td>
                         </tr>
                         <tr>
                             <td><strong>Espresso</strong></td>
                             <td>Rich, aromatic French roast coffee</td>
                             <td class="price">$3</td>
+                            <td><button class="add-to-cart-btn" onclick="addToCart('Espresso', 3)">Add to Cart</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -160,5 +205,8 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Cart JavaScript -->
+    <script src="js/cart.js"></script>
 </body>
 </html>
